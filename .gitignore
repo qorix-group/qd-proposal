@@ -1,0 +1,11 @@
+# ignore ALL .log files
+*.log
+**/logs
+**/logs/debug.log
+*.log
+
+# backup .bkp files
+*.bkp
+
+# ignore ALL files in ANY directory named temp
+temp/
