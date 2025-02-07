@@ -1,0 +1,35 @@
+{
+    "$id": "./schemas/performance/base-attribute",
+    "title": "base-attribute",
+    "type": "object",
+    "properties": {
+        "key": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "base_type": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "object"
+                },
+                {
+                    "$ref": "#"
+                }
+            ]
+        },
+        "multiplicity": {
+            "type": "integer"
+        }
+    }
+}

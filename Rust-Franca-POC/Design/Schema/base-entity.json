@@ -1,0 +1,22 @@
+{
+    "$id": "./schemas/performance/base-entity",
+    "$schema": "./base-attribute.json",
+    "title": "base-entity",
+    "type": "object",
+    "properties": {
+        "key": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+
+        "multiplicity": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "key",
+        "name"
+    ]
+}
