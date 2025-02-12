@@ -1,0 +1,24 @@
+{
+    "$id": "./schemas/performance/core-schema",
+    "$schema": "./base-entity.json",
+    "title": "Rest",
+    "type": "object",
+    "key": "",
+    "name": "",
+    "properties": {
+        "allOf": [
+            {
+                "$ref": "/base-entity"
+            }
+        ],
+        "url": {
+            "$ref": "./base-attribute.json#/base-attribute"
+        },
+        "port": {
+            "$ref": "./base-attribute.json#/base-attribute"
+        },
+        "method": {
+            "$ref": "./base-attribute.json#/base-attribute"
+        }
+    }
+}

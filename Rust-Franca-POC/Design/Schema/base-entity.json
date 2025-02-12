@@ -14,9 +14,5 @@
         "multiplicity": {
             "type": "integer"
         }
-    },
-    "required": [
-        "key",
-        "name"
-    ]
+    }
 }

@@ -25,6 +25,7 @@ TAGS
 TAGS.*
 
 ## Build
+*.lock
 /dl/
 /doc/
 /inst/
@@ -38,6 +39,7 @@ TAGS.*
 /library/target
 /src/bootstrap/target
 /src/tools/x/target
+
 # Created by default with `src/ci/docker/run.sh`
 /obj/
 
