@@ -1,0 +1,30 @@
+{
+    "key": "Rest_R1",
+    "name": "My Rest API configuration",
+    "attributes": {
+        "A1": {
+            "key": "A1",
+            "name": "methodType",
+            "multiplicity": 1,
+            "att_type": "String",
+            "required": false,
+            "value": ""
+        },
+        "A2": {
+            "key": "A2",
+            "name": "url",
+            "multiplicity": 1,
+            "att_type": "String",
+            "required": false,
+            "value": ""
+        },
+        "A3": {
+            "key": "A3",
+            "name": "port",
+            "multiplicity": 1,
+            "att_type": "int",
+            "required": false,
+            "value": "80"
+        }
+    }
+}

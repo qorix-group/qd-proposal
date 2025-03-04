@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-#[derive(Debug, Default)]
+#[derive(Debug, Default, Deserialize)]
 #[allow(dead_code)]
 struct BaseAttribute {
     // identity elements
@@ -64,7 +64,7 @@ impl PartialEq for BaseAttribute {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Default, Deserialize)]
 #[allow(dead_code)]
 struct BaseEntity {
     key: String,
@@ -101,9 +101,39 @@ impl PartialEq for BaseEntity {
     }
 }
 
+use serde::Deserialize;
+
+use std::error::Error;
+use std::fs::File;
+use std::io::BufReader;
+use std::path::Path;
+
+// #[derive(Deserialize, Debug)]
+// struct User {
+//     fingerprint: String,
+//     location: String,
+// }
+
+fn read_user_from_file<P: AsRef<Path>>(path: P) -> Result<BaseEntity, Box<dyn Error>> {
+    // Open the file in read-only mode with buffer.
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+
+    // Read the JSON contents of the file as an instance of `User`.
+    let u: BaseEntity = serde_json::from_reader(reader)?;
+
+    // Return the `User`.
+    Ok(u)
+}
+
+// fn main() {
+//     let u = read_user_from_file("test.json").unwrap();
+//     println!("{:#?}", u);
+// }
+
 fn main() {
     // Rest Entity
-    let mut my_rest_configuration : BaseEntity = BaseEntity::new(
+    let mut my_rest_configuration: BaseEntity = BaseEntity::new(
         "Rest_R1".to_owned(),
         "My Rest API configuration".to_string(),
     );
@@ -111,23 +141,20 @@ fn main() {
     // Attributes of REST API
     let method_type = BaseAttribute::new(
         "A1".to_owned(),
-        "methodType, ".to_owned(),
+        "methodType".to_owned(),
         1,
         "String".to_owned(),
     );
-    let url = BaseAttribute::new("A2".to_owned(), "url, ".to_owned(), 1, "String".to_owned());
-    let mut port= BaseAttribute::new("A3".to_owned(), "port, ".to_owned(), 1, "int".to_owned());
+    let url = BaseAttribute::new("A2".to_owned(), "url".to_owned(), 1, "String".to_owned());
+    let mut port = BaseAttribute::new("A3".to_owned(), "port".to_owned(), 1, "int".to_owned());
     port.set_value("80".to_string());
-   
 
     my_rest_configuration.add_attribute(&method_type.get_key(), method_type);
     my_rest_configuration.add_attribute(&url.get_key(), url);
     my_rest_configuration.add_attribute(&port.get_key(), port);
 
-    
-
     // Rest Entity
-    let mut my_rest_configuration_1 : BaseEntity = BaseEntity::new(
+    let mut my_rest_configuration_1: BaseEntity = BaseEntity::new(
         "Rest_R1".to_owned(),
         "My Rest API configuration".to_string(),
     );
@@ -135,12 +162,12 @@ fn main() {
     // Attributes of REST API
     let method_type = BaseAttribute::new(
         "A1".to_owned(),
-        "methodType, ".to_owned(),
+        "methodType".to_owned(),
         1,
         "String".to_owned(),
     );
-    let url_1 = BaseAttribute::new("A2".to_owned(), "url, ".to_owned(), 1, "String".to_owned());
-    let mut port_1 = BaseAttribute::new("A3".to_owned(), "port, ".to_owned(), 1, "int".to_owned());
+    let url_1 = BaseAttribute::new("A2".to_owned(), "url".to_owned(), 1, "String".to_owned());
+    let mut port_1 = BaseAttribute::new("A3".to_owned(), "port".to_owned(), 1, "int".to_owned());
     // port_1.set_required(true);
     port_1.set_value("80".to_string());
 
@@ -150,12 +177,17 @@ fn main() {
     my_rest_configuration_1.add_attribute(&url_1.get_key(), url_1);
     my_rest_configuration_1.add_attribute(&port_1.get_key(), port_1);
 
-    let res = my_rest_configuration.validate(&my_rest_configuration_1);
+    // let res = my_rest_configuration.validate(&my_rest_configuration_1);
 
-    println!("Original ------ {:?}", my_rest_configuration);
-    println!("\nNew -----------{:?}", my_rest_configuration_1);
+    println!("Original ------ {:#?}", my_rest_configuration);
+    // println!("\nNew -----------{:#?}", my_rest_configuration_1);
 
+    
+
+    let my_rest_configuration_2: BaseEntity = read_user_from_file("test1.json").unwrap();
+    println!("{:#?}", my_rest_configuration_2);
+
+    let res = my_rest_configuration.validate(&my_rest_configuration_2);
     println!("\nValidation between entity - {}", res);
-
 
 }
