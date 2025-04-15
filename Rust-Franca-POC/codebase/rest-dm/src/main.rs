@@ -14,6 +14,11 @@ struct BaseAttribute {
     value: String,
 }
 
+enum AttributeType{
+
+}
+
+
 #[allow(dead_code)]
 impl BaseAttribute {
     fn new(key: String, name: String, multiplicity: u16, att_type: String) -> BaseAttribute {
@@ -64,12 +69,22 @@ impl PartialEq for BaseAttribute {
     }
 }
 
+enum EntityType {
+    Component,
+    Relation,
+    Interface,
+    Configuration,
+    Event,
+}
+
+
 #[derive(Debug, Default, Deserialize)]
 #[allow(dead_code)]
 struct BaseEntity {
     key: String,
     name: String,
     attributes: HashMap<String, BaseAttribute>,
+    // dependency: Lis
 }
 
 #[allow(dead_code)]
