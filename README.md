@@ -1,2 +1,2 @@
-# qdp-dm
-Qorix Developer Performance - IDL and Data model
+# qd-proposal
+Qorix Developer Proposal

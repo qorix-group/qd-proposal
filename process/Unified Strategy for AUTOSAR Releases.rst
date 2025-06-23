@@ -2,7 +2,7 @@
 Proposal: Unified Strategy for AUTOSAR Releases
 ==============================================
 
-Author       : Tooling & Middleware Architect Team  
+Author       : Suresh Chamuah, PPM
 Version      : 1.0  
 Date         : 2025-06-18  
 Applies To   : All AUTOSAR Adaptive middleware modules (e.g., ComStack, DCM, EM, PHM etc)  
