@@ -38,7 +38,7 @@ Applicable to all middleware components (e.g., ``ara::com``, ``ara::log``, SOME/
 - **PTR System**: JIRA / IBM Rational / Polarion
 - **Source Control**: Git / Gerrit
 - **CI/CD**: Jenkins / Bamboo
-- **Test Reports**: Squish, CANoe, Robot Framework
+- **Test Reports**: Jacoco, CANoe, Robot Framework
 
 5. Process Steps
 ----------------
@@ -204,11 +204,6 @@ Applicable to all middleware components (e.g., ``ara::com``, ``ara::log``, SOME/
    * - Innovation/Buffer Week
      - Root cause backlog cleanup
      - 5–10%
-
-.. note::
-
-   📌 **Note**: Bandwidth may increase in stabilization-heavy PIs. Adjustments are coordinated with PM and RTE based on defect trend and program phase.
-
 
 .. note::
 
