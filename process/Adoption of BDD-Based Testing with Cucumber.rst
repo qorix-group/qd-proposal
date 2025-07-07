@@ -3,10 +3,9 @@ Proposal: Adoption of BDD-Based Testing with
 Cucumber and Selenium in Qorix Developer
 ==============================================
 
-**To:** Test Architect  
-**From:** [Your Name]  
-**Date:** [Date]  
-**Subject:** Proposal for Integrating Behavior-Driven Development (BDD) Approach for Automated Testing
+- To: Test Architect  
+- From: Suresh Chamuah 
+- Date: 07.07.2025  
 
 --------------------
 1. Objective
