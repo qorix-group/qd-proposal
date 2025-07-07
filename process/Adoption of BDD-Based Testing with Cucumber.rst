@@ -1,6 +1,5 @@
 ==============================================
-Proposal: Adoption of BDD-Based Testing with 
-Cucumber and Selenium in Qorix Developer
+Proposal: Adoption of BDD-Based Testing with Cucumber and Selenium in Qorix Developer
 ==============================================
 
 - To: Test Architect  
