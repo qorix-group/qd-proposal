@@ -58,7 +58,33 @@ Explain **the structure in plain words**.
 flowchart TD
     App[Application] -->|payload| Serializer
     Serializer -->|serialized data| Network
+```
+---
 
+**Class Diagram:**
+```mermaid
+classDiagram
+    class Serializer {
+        +serialize()
+        +deserialize()
+    }
+    class Network {
+        +send()
+        +receive()
+    }
+    Serializer --> Network
+```
+---
+
+**Sequence Diagram:**
+```mermaid
+sequenceDiagram
+    participant App
+    participant Serializer
+    participant Network
+    App->>Serializer: serialize(payload)
+    Serializer->>Network: send(data)
+```
 ---
 
 ## Key Decisions
