@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36 Edg/138.0.0.0" version="28.0.5">
+  <diagram id="AUTOSAR_Chatbot" name="AUTOSAR Chatbot Architecture">
+    <mxGraphModel dx="819" dy="533" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="user" value="User" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4" parent="1" vertex="1">
+          <mxGeometry x="200" y="20" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ui" value="User Interface (Web/CLI)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC" parent="1" vertex="1">
+          <mxGeometry x="200" y="80" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;" parent="1" source="user" target="ui" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="preprocess" value="Query Preprocessing &amp; Intent Classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC" parent="1" vertex="1">
+          <mxGeometry x="200" y="140" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="ui" target="preprocess" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="retrieval" value="Hybrid Retrieval Module" style="swimlane;html=1;fillColor=#DAE8FC" parent="1" vertex="1">
+          <mxGeometry x="200" y="200" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="keyword" value="Keyword Search (ES)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7" parent="retrieval" vertex="1">
+          <mxGeometry x="20" y="20" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="semantic" value="Semantic Search (ChromaDB / FAISS + Sentence Transformers)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E1D5E7" parent="retrieval" vertex="1">
+          <mxGeometry x="20" y="80" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="preprocess" target="retrieval" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="context" value="Context Augmentation &amp; Prompt Creation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC" parent="1" vertex="1">
+          <mxGeometry x="200" y="360" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="retrieval" target="context" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="llm" value="Transformer-based LLM Generator" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC" parent="1" vertex="1">
+          <mxGeometry x="200" y="420" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow5" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="context" target="llm" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="formatter" value="Response Formatter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D5E8D4" parent="1" vertex="1">
+          <mxGeometry x="200" y="480" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="llm" target="formatter" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow7" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="formatter" target="user" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="docproc" value="Document Processing Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC" parent="1" vertex="1">
+          <mxGeometry x="500" y="80" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pdfparser" value="PDF Parser + Extractor" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC" parent="1" vertex="1">
+          <mxGeometry x="500" y="140" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow8" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="docproc" target="pdfparser" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dataclean" value="Data Cleaning &amp; Structuring" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC" parent="1" vertex="1">
+          <mxGeometry x="500" y="200" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="pdfparser" target="dataclean" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" value="Storage Layer" style="swimlane;html=1;fillColor=#E1D5E7" parent="1" vertex="1">
+          <mxGeometry x="500" y="260" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="mongodb" value="MongoDB (Configs)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC" parent="storage" vertex="1">
+          <mxGeometry x="20" y="20" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="faiss" value="ChromaDB / FAISS (Embeddings)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8CECC" parent="storage" vertex="1">
+          <mxGeometry x="20" y="80" width="180" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow10" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="dataclean" target="storage" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="continual" value="Continual Learning Module" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DAE8FC" parent="1" vertex="1">
+          <mxGeometry x="500" y="400" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow11" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="storage" target="continual" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="finetune" value="Model Fine-tuning Pipeline" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF2CC" parent="1" vertex="1">
+          <mxGeometry x="500" y="460" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow12" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;" parent="1" source="continual" target="finetune" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
