@@ -1,0 +1,60 @@
+flowchart TD
+    %% Input
+    DOC[📋 AUTOSAR Documents<br/><small style="color:black">Technical documentation input</small>]
+    USER[💬 User Query<br/><small style="color:black">Natural language questions</small>]
+    
+    %% Main Processing Box
+    subgraph LIGHTRAG [" "]
+        direction TB
+        
+        %% Processing Components
+        EXTRACT[⚙️ Content Extraction<br/><small style="color:black">Parses text, tables & images</small>]
+        
+        AI_PROC[🤖 AI Processing<br/><small style="color:black">Extracts entities & relationships</small>]
+        
+        KG_BUILD[🌐 Knowledge Graph<br/><small style="color:black">Builds connected data structure</small>]
+        
+        %% Storage
+        subgraph STORAGE [" "]
+            direction LR
+            GRAPH_DB[🗂️ Graph DB<br/><small style="color:black">Entity connections</small>]
+            VECTOR_DB[🔢 Vector DB<br/><small style="color:black">Semantic embeddings</small>]
+        end
+        
+        %% Query Processing
+        QUERY_PROC[🔍 Query Engine<br/><small style="color:black">5 intelligent search modes</small>]
+        
+        CONTEXT[🧩 Context Assembly<br/><small style="color:black">Combines results optimally</small>]
+        
+        LLM[💡 LLM Generator<br/><small style="color:black">Creates contextual answers</small>]
+    end
+    
+    %% Output
+    ANSWER[📝 Final Answer<br/><small style="color:black">Accurate technical response</small>]
+    
+    %% Connections
+    DOC --> EXTRACT
+    EXTRACT --> AI_PROC
+    AI_PROC --> KG_BUILD
+    KG_BUILD --> STORAGE
+    
+    USER --> QUERY_PROC
+    QUERY_PROC --> CONTEXT
+    STORAGE --> CONTEXT
+    CONTEXT --> LLM
+    LLM --> ANSWER
+    
+    %% Styling - Light colors with black text
+    style DOC fill:#f0f8ff,stroke:#4a90e2,stroke-width:2px,color:#000000
+    style USER fill:#fff5f5,stroke:#e74c3c,stroke-width:2px,color:#000000
+    style LIGHTRAG fill:#ffffff,stroke:#6c757d,stroke-width:3px,color:#000000
+    style EXTRACT fill:#e8f5e9,stroke:#28a745,stroke-width:2px,color:#000000
+    style AI_PROC fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#000000
+    style KG_BUILD fill:#e7f3ff,stroke:#17a2b8,stroke-width:2px,color:#000000
+    style STORAGE fill:#ffffff,stroke:#6c757d,stroke-width:2px,color:#000000
+    style GRAPH_DB fill:#e8f4f8,stroke:#20c997,stroke-width:2px,color:#000000
+    style VECTOR_DB fill:#f0f4ff,stroke:#6f42c1,stroke-width:2px,color:#000000
+    style QUERY_PROC fill:#ffeaa7,stroke:#fdcb6e,stroke-width:2px,color:#000000
+    style CONTEXT fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px,color:#000000
+    style LLM fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#000000
+    style ANSWER fill:#d1ecf1,stroke:#007bff,stroke-width:2px,color:#000000
