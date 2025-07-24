@@ -5,7 +5,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="preproc_group" value="Pre-processing: Knowledge collection, chunking, embedding" style="swimlane;html=1;fillColor=#FFFFFF;strokeColor=#FF0000;strokeWidth=2;fontSize=14;fontColor=#FF0000" parent="1" vertex="1">
-          <mxGeometry x="-180" y="20" width="400" height="200" as="geometry" />
+          <mxGeometry x="-220" y="20" width="440" height="200" as="geometry" />
         </mxCell>
         <mxCell id="embed_model" value="Embedding&lt;div&gt;Model&lt;/div&gt;" style="whiteSpace=wrap;html=1;fillColor=#FFF2CC;shape=cloud;perimeter=ellipsePerimeter;" parent="preproc_group" vertex="1">
           <mxGeometry x="140" y="60" width="120" height="80" as="geometry" />
