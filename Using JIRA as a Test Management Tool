@@ -1,0 +1,102 @@
+# Using JIRA as a Test Management Tool (Without Paid Plugins)
+
+This guide explains how to configure JIRA for full test management without purchasing plugins such as Zephyr, Xray, or TestRail.  
+The approach is fully ASPICE / ISO 26262 compliant.
+
+---
+
+## 1. Concept Overview
+
+| Test Artifact   | JIRA Mapping      |
+|-----------------|------------------|
+| Test Plan       | Issue Type        |
+| Test Case       | Issue Type        |
+| Test Step       | Field or Sub-task |
+| Test Execution  | Issue Type        |
+| Test Result     | Custom Field      |
+| Evidence        | Attachment        |
+| Traceability    | Issue Links       |
+| Defects         | Bug Issue Type    |
+
+**Traceability path:**  
+**Requirement → Test Case → Test Execution → Test Result → Defect (if failed)**
+
+---
+
+## 2. Required Custom Issue Types
+
+| Issue Type      | Description                                      |
+|-----------------|--------------------------------------------------|
+| Test Plan       | Groups multiple executions for a release/sprint  |
+| Test Case       | Contains test description, preconditions & steps |
+| Test Execution  | Used to record execution results and evidence    |
+
+---
+
+## 3. Required Custom Fields
+
+| Field Name      | Data Type  | Used For                               |
+|-----------------|------------|----------------------------------------|
+| Step Description | Text       | Describes the test step                |
+| Expected Result  | Text       | What should happen after execution     |
+| Actual Result    | Text       | Result captured during execution       |
+| Status           | Dropdown   | Pass / Fail / Blocked / Not Executed   |
+| Execution Date   | Date       | When the test was executed             |
+| Build / Version  | Text       | Software version under test            |
+| Tester           | User Picker| Name of person executing               |
+| Evidence         | Attachment | Screenshots / logs / outputs           |
+
+---
+
+## 4. Workflow Recommendations
+
+| Entity        | Suggested Workflow                             |
+|--------------|-------------------------------------------------|
+| Test Plan    | Draft → In Progress → Completed                 |
+| Test Case    | Draft → Review → Approved → Obsolete            |
+| Test Execution | In Progress → Blocked → Passed / Failed        |
+
+---
+
+## 5. Required Issue Links for Traceability
+
+| Link Type                     | Meaning                                  |
+|------------------------------|------------------------------------------|
+| "tests" (Requirement → Test Case) | Requirement coverage                  |
+| "executes" (Test Case → Test Execution) | Execution performed            |
+| "is caused by" (Defect → Test Execution) | Defect due to failed test     |
+
+---
+
+## 6. Dashboard & Reports
+
+Recommended JIRA gadgets:
+
+- Filter Results (Test status by feature/sprint)
+- Two-dimensional table (Execution status per Tester)
+- Created vs Resolved (Defect trend)
+- Heatmap (Failure by Module)
+
+---
+
+## 7. How to Scale
+
+| Scenario                   | Strategy                           |
+|---------------------------|------------------------------------|
+| Large number of test cases | Use Components / Labels for grouping |
+| Distributed testing teams | Use JIRA Permission Schemes          |
+| Audit / ASPICE project     | Export report using Issue Navigator |
+
+---
+
+## 8. Export for Compliance
+
+To export with evidence:
+
+> **Issue Navigator → Columns = Steps + Result + Tester → Export → HTML / Excel / CSV + Attachments**
+
+Also recommended: Attach `JIRA audit logs + dashboard screenshots` to safety work product.
+
+---
+
+### © Qorix – JIRA Test Management Guide
